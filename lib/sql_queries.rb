@@ -6,15 +6,8 @@
 # CREATE TABLE projects (id INTEGER PRIMARY KEY, title TEXT, category TEXT, funding_goal REAL, start_date TEXT, end_date TEXT);
 # CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT, age INTEGER);
 # CREATE TABLE pledges (id INTEGER PRIMARY KEY, amount REAL, user_id INTEGER, project_id INTEGER);
-# def select_category_from_projects
-# "SELECT category FROM projects;"
-# end
 
 # Make sure each ruby method returns a string containing a valid SQL statement.
-
-# users (id, name, age)
-# projects (id, title, category, funding_goal, start_date, end_date)
-# pledges (id, amount, user_id, project_id)
 
 def selects_the_titles_of_all_projects_and_their_pledge_amounts_alphabetized_by_name
   "SELECT projects.title, SUM(pledges.amount) from projects JOIN pledges WHERE projects.id = pledges.project_id GROUP BY projects.title ORDER BY projects.title;"
